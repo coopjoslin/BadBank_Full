@@ -11,9 +11,18 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "firebase": "^9.0.2",
     "lowdb": "^1.0.0",
     "mongodb": "^3.7.1"
   },
   "devDependencies": {},
-  "keywords": []
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sboschetti/BadBank_Full.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sboschetti/BadBank_Full/issues"
+  },
+  "homepage": "https://github.com/sboschetti/BadBank_Full#readme"
 }
