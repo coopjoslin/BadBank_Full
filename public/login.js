@@ -10,7 +10,7 @@ const firebaseConfig = {
   projectId: "badbank-bb18b",
   storageBucket: "badbank-bb18b.appspot.com",
   messagingSenderId: "745789819925",
-  appId: "1:745789819925:web:8ae5823019b3ac9692d21c"
+  appId: "1:745789819925:web:8ae5823019b3ac9692d21c",
 };
 
 // Initialize Firebase
@@ -29,14 +29,7 @@ export function login() {
   const googlelogin = document.getElementById("googlelogin");
 
   // login
-  login.addEventListener("click", (e) => {
-    const auth = firebase.auth();
-    const promise = auth.signInWithEmailAndPassword(
-      email.value,
-      password.value
-    );
-    promise.catch((e) => console.log(e.message));
-  });
+  // login.addEventListener("click");
 
   // signup
   signup.addEventListener("click", (e) => {
@@ -99,15 +92,32 @@ export function login() {
     }
   });
 
-return (
-  <>
-      <h1 id="loggedInStatus">You are not yet logged in</h1>
-      <input id="email" type="email" placeholder="Email"/><br/>
-      <input id="password" type="password" placeholder="Password"/><br/><br/>
-      <button id="login">Login</button>
-      <button id="signup">SignUp</button>
-      <button id="logout" style="display:none;">Logout</button>
-      <button id="googlelogin">Google Login</button>
-  </>
-);
+  return (
+    <>
+      <h1 id='loggedInStatus'>You are not yet logged in</h1>
+      <input id='email' type='email' placeholder='Email' />
+      <br />
+      <input id='password' type='password' placeholder='Password' />
+      <br />
+      <br />
+      <button
+        id='login'
+        onClick={(e) => {
+          const auth = firebase.auth();
+          const promise = auth.signInWithEmailAndPassword(
+            email.value,
+            password.value
+          );
+          promise.catch((e) => console.log(e.message));
+        }}
+      >
+        Login
+      </button>
+      <button id='signup'>SignUp</button>
+      <button id='logout' style={{ display: "none" }}>
+        Logout
+      </button>
+      <button id='googlelogin'>Google Login</button>
+    </>
+  );
 }

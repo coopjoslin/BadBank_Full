@@ -1,6 +1,5 @@
 var ui = {};
-var target = document.getElementById('target');
-
+var target = document.getElementById("target");
 
 ui.navigation = `
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -33,7 +32,7 @@ ui.navigation = `
 </nav>
 `;
 
-var navigation = document.getElementById('navigation');
+var navigation = document.getElementById("navigation");
 navigation.innerHTML += ui.navigation;
 
 ui.createAccount = `
@@ -52,8 +51,7 @@ ui.createAccount = `
       </div>
 `;
 
-ui.login = 
-`
+ui.login = `
 <div class="card text-white bg-primary  mb-3" style="max-width:18rem;">
 <div class="card-header">Create Account</div>
 <div class="card-body">
@@ -73,10 +71,9 @@ Password<br/>
 <div id="createLogin"></div>
   </div>
   </div>
-`
+`;
 
-ui.balance =
-`
+ui.balance = `
 <div class="card text-white bg-primary  mb-3" style="max-width:18rem;">
 <div class="card-header">Create Account</div>
 <div class="card-body">
@@ -147,8 +144,7 @@ ui.withdraw = `
       </div>
 `;
 
-ui.alldata =
-`
+ui.alldata = `
 <>
 <h5>All Data in Store</h5>
 <button type="button" class="btn" onclick="loadAllData()">Show All Data</button>
@@ -156,15 +152,13 @@ ui.alldata =
 </>
 `;
 
-ui.transaction = 
-`
+ui.transaction = `
 <>
 <h5>Transaction</h5>
 </>
 `;
 
-ui.default = 
-`
+ui.default = `
 <div class="card text-white bg-primary  mb-3" style="max-width:18rem;">
 <div class="card-header">Welcome</div>
 <div class="card-body">
@@ -173,36 +167,36 @@ ui.default =
 </div>
 </div>
 </div>
-`
+`;
 
-var loadCreateAccount = function(){
-    target.innerHTML = ui.createAccount;
+var loadCreateAccount = function () {
+  target.innerHTML = ui.createAccount;
 };
-var loadBalance = function(){
-    target.innerHTML = ui.balance;
-};
-
-var loadLogin = function(){
-    target.innerHTML = ui.login;
+var loadBalance = function () {
+  target.innerHTML = ui.balance;
 };
 
-var loadTransaction = function(){
+var loadLogin = function () {
+  target.innerHTML = ui.login;
+};
+
+var loadTransaction = function () {
   target.innerHTML = ui.transaction;
 };
 
-var loadDeposit = function(){
-    target.innerHTML = ui.deposit;
+var loadDeposit = function () {
+  target.innerHTML = ui.deposit;
 };
 
-var loadWithdraw = function(){
-    target.innerHTML = ui.withdraw;
+var loadWithdraw = function () {
+  target.innerHTML = ui.withdraw;
 };
-var loadAllData = function(){
-    target.innerHTML = ui.alldata;
+var loadAllData = function () {
+  target.innerHTML = ui.alldata;
 };
 
-var defaultModule = function(){
-    target.innerHTML = ui.default;
-}
+var defaultModule = function () {
+  target.innerHTML = ui.default;
+};
 
 defaultModule();
