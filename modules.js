@@ -85,7 +85,7 @@ Email<br/>
   onChange={e => setEmail(e.currentTarget.value)}/><br/>
 
 <button type="submit" 
-  class="btn btn-light" 
+  class="btn" 
   onClick="balance()">
     Check Balance
 </button>
@@ -111,7 +111,7 @@ ui.deposit = `
       value={amount} onChange={e => setAmount(e.currentTarget.value)}/><br/>
 
     <button type="submit" 
-      className="btn btn-light" 
+      className="btn" 
       onClick="deposit()">Deposit</button>
       </div>
       </div>
@@ -136,7 +136,7 @@ ui.withdraw = `
       onChange={e => setAmount(e.currentTarget.value)}/><br/>
 
     <button type="submit" 
-      class="btn btn-light" 
+      class="btn" 
       onClick="withdraw()">
         Withdraw
     </button>

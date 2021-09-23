@@ -18,14 +18,14 @@ function DepositMsg(props){
   return (<>
     <h5>Success</h5>
     <button type="submit" 
-      className="btn btn-light" 
+      className="btn" 
       onClick={() => {
           props.setShow(true);
           props.setStatus('');
       }}>
         Deposit again
     </button>
-    <a className="btn btn-light" href="/#/withdraw" onClick={Withdraw}>Withdraw</a>
+    <a className="btn" href="/#/withdraw" onClick={Withdraw}>Withdraw</a>
   </>);
 } 
 
@@ -64,7 +64,7 @@ function DepositForm(props){
       value={amount} onChange={e=>setAmount(e.currentTarget.value)}/><br/>
 
     <button type="submit" 
-      className="btn btn-light" 
+      className="btn" 
       onClick={handle}>Deposit</button>
 
   </>);
