@@ -60,13 +60,11 @@ Email<br/>
   class="form-control" 
   placeholder="Enter email" 
   value={email}/><br/>
-
 Password<br/>
 <input type="password" 
   class="form-control" 
   placeholder="Enter password" 
   value={password}/><br/>
-
 <button type="submit" className="btn btn-light" onClick="login()">Login</button>
 <div id="createLogin"></div>
   </div>
@@ -83,7 +81,6 @@ Email<br/>
   placeholder="Enter email" 
   value={email} 
   onChange={e => setEmail(e.currentTarget.value)}/><br/>
-
 <button type="submit" 
   class="btn" 
   onClick="balance()">
@@ -109,7 +106,6 @@ ui.deposit = `
       className="form-control" 
       placeholder="Enter amount" 
       value={amount} onChange={e => setAmount(e.currentTarget.value)}/><br/>
-
     <button type="submit" 
       className="btn" 
       onClick="deposit()">Deposit</button>
@@ -127,14 +123,12 @@ ui.withdraw = `
       placeholder="Enter email" 
       value={email} 
       onChange={e => setEmail(e.currentTarget.value)}/><br/>
-
     Amount<br/>
     <input type="number" 
       class="form-control" 
       placeholder="Enter amount" 
       value={amount} 
       onChange={e => setAmount(e.currentTarget.value)}/><br/>
-
     <button type="submit" 
       class="btn" 
       onClick="withdraw()">

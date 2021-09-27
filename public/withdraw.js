@@ -44,7 +44,7 @@ function WithdrawForm(props){
             props.setShow(false);
             console.log('JSON:', data);
         } catch(err) {
-            props.setStatus('Deposit failed')
+            props.setStatus('Withdraw failed')
             console.log('err:', text);
         }
     });
