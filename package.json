@@ -1,0 +1,36 @@
+{
+  "name": "littledb",
+  "version": "1.0.0",
+  "description": "lowdb sample for 1.125",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "sboschetti25@gmail.com",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "firebase": "^9.1.0",
+    "firebase-admin": "^9.11.1",
+    "install": "^0.13.0",
+    "lowdb": "^1.0.0",
+    "mongodb": "^3.7.1",
+    "node": "^16.9.1",
+    "npm": "^7.24.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.15.7",
+    "@babel/core": "^7.15.5",
+    "@babel/preset-env": "^7.15.6"
+  },
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sboschetti/BadBank_Full.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sboschetti/BadBank_Full/issues"
+  },
+  "homepage": "https://github.com/sboschetti/BadBank_Full#readme"
+}

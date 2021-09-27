@@ -1,0 +1,16 @@
+# BadBank_Full
+
+# Project Title
+BadBank (Full-Stack Version)
+# Description/Motivation
+This has been an ongoing project as I learn the ins and outs of full-stack development. 
+# Installation Guidelines
+Be sure to run npm install to install dependencies prior to running.
+# Technology used
+MongoDB, Express, React, Node.js
+# Features
+Create an account, login, transactions (deposit/withdraw), check your balance, and see all user data
+# License
+MIT
+# Screenshots
+<img src="https://sianna-boschetti-badbank.s3.us-east-1.amazonaws.com/Screen%20Shot%202021-09-19%20at%202.03.56%20PM.png?response-content-disposition=inline&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEGsaCXVzLWVhc3QtMSJIMEYCIQDEFNm006vtFaQDVId0xkyvtUDGuUkINspXvfQ4gqLtxQIhAP3ywbNelMO3ScfEZkxHlIWPsc8DAoI2WlBYt8oViOI3Kv8CCMP%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNjk0NjM0NDI1NDM4IgwEf%2Fv5nhDY3XVuCeIq0wKxalk3BtUqMU7fhY%2FSPeVkSTX5cCHwLMAps2Tf4I0y8rI6YfKcIIfwoavt5hPI5fSl3frNGkhQmNIS9K9Xisi3h7i62kdJTSZbnKB4e66McvJzJWeA6r6o7V2f1JvXiHUhXYhYDPtlGS2qH4%2BOFGMwpAfr9xkYpVzl0hJnGRUtrdYb7RYp9qywsifenEAPeAFAF4idRUHMBf%2BGW8mXqGA0eWd0mv%2BDSj1mJYDnB%2BHrWFGAOt9w9yLas5U%2FHMvyPD5BLvIdmlSYVXr%2BWqfdFCmtoq1Ea7A%2FY2Lky8OAf5dGTqC1F7tvCAoI%2BRdXY%2FZ7Hflu1gm50nUigyd4y73j%2BPT8U80KbpXyVLdHZRzItmOFk2VnkTcgzR9IPH90pCN3NvFq22eYECEA95nnLKF0rcoLA4simTtQXf9A4B0vFO8Mizcx9I12Bl9NdNUtLY9Or2PMmeQwg%2FmdigY6sgIHksfj1%2FcgtS3bjuFCWrptZtObNjIjiIKpIYmgPke0ruAuQH3PvoA4VdExnl5NKllkzdlgTtRBfo34E57qvvF2XHVVP7vPvriXu7y1DK2DW6mEYQ4jJNTCah7Cvgc7xWHWxv6wVdgfCpVLFb6NAV1621%2FZH5eSWp6T2%2B0w0Ai5DuTmtgysQfw2SyBkrelY7SX1Ia%2B41%2F18cFNAyA75B5eb487pfjnYmjg5UDyeEzdXnJUvRL4Tvl0h3ER9tNyHIzmLqzSmz4LcPhleqzssTnBTPy06YBDAsJ0l0M555Opq1IFW7kKkebUVdnBNR3K5YVdAGSaDJt6QtXOw0OUQSPRtRFBXAmivMom0sG5LDcY3SYtiKgaBRy2kBy6ydw4HeUS%2BCeKRlmKXVu9yXLQI24%2BsXv4%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20210919T182037Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Credential=ASIA2DO3QFRPECBRPXXN%2F20210919%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=1969c1a2dcbd4f6ec1506a7a19861fff54115e7be9d50ece61aaf3b46a276ee0" alt="screenshot of the BadBank application">
