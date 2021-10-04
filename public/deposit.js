@@ -1,7 +1,7 @@
 function Deposit(){
   const [show, setShow]     = React.useState(true);
   const [status, setStatus] = React.useState('');  
-
+  console.log("deposit fired");
   return (
     <Card
       bgcolor="warning"
@@ -15,14 +15,12 @@ function Deposit(){
 }
 
 function DepositMsg(props){
+  console.log('depositmsg fired');
   return (<>
     <h5>Success</h5>
     <button type="submit" 
       className="btn" 
-      onClick={() => {
-          props.setShow(true);
-          props.setStatus('');
-      }}>
+      onClick={() => {Deposit}}>
         Deposit again
     </button>
     <a className="btn" href="/#/withdraw" onClick={Withdraw}>Withdraw</a>
@@ -31,9 +29,10 @@ function DepositMsg(props){
 
 function DepositForm(props){
   const [email, setEmail]   = React.useState('');
-  const [amount, setAmount] = React.useState('');
-
+  const [amount, setAmount] = React.useState('');  
+  console.log('depositform fired');
   function handle(){
+    console.log('handle fired');
     fetch(`/account/update/${email}/${amount}`)
     .then(response => response.text())
     .then(text => {

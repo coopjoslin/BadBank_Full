@@ -1,6 +1,5 @@
 
-import { auth, Google, signInWithPopup } from "./firebase.js";
-
+import firebase, { auth, Google, signInWithPopup, db, firestore } from "./firebase.js";
   // Your web app's Firebase configuration
   const firebaseConfig = {
     apiKey: "AIzaSyCzLdWJEq0vOWSjfVA3C5OQxX--HO3kJmI",
@@ -10,15 +9,9 @@ import { auth, Google, signInWithPopup } from "./firebase.js";
     messagingSenderId: "745789819925",
     appId: "1:745789819925:web:8ae5823019b3ac9692d21c",
 };
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  // get elements
-
-  // login state
   
-  export function Login(){
+function Login(){
   console.log('login fired');
-  
-  firebase.initializeApp(firebaseConfig);
   return (
     <>
       <h1 id='loggedInStatus'>You are not yet logged in</h1>
@@ -29,12 +22,27 @@ import { auth, Google, signInWithPopup } from "./firebase.js";
       <br />
       <button id="createAccount" onClick={() => {
             const loggedInStatus = document.getElementById("loggedInStatus");
-            const email = document.getElementById("email");
-            const password = document.getElementById("password");
-            const promise = firebase.auth().createUserWithEmailAndPassword(email.value, password.value);
-            promise.catch((e) => console.log(e.message));
-            loggedInStatus.innerText = `You are logged in.`;
-          } }>Create Account</button>
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            firebase.auth().createUser();
+            firebase.auth().createUserWithEmailAndPassword(email, password)
+                .then(function(result) {
+                })
+                .catch(function(error) {
+                  var errorCode = error.code;
+                  var errorMessage = error.message;
+                  if (errorCode == 'auth/weak-password') {
+                    alert('The password is too weak.');
+                  } else {
+                    alert(errorMessage);
+                  }
+                  console.log(error);
+                });
+           
+                const url = `/account/create/${email}/${password}`;
+                
+                } }>Create Account</button>
       <button id='logout' style={{ display: "none" }} onClick={()=> {
             firebase.auth().signOut();
             const loggedInStatus = document.getElementById("loggedInStatus");
@@ -48,10 +56,12 @@ import { auth, Google, signInWithPopup } from "./firebase.js";
             firebase.auth();
             const loggedInStatus = document.getElementById("loggedInStatus");
             const createAccount = document.getElementById("createAccount");
-            const email = document.getElementById("email");
-            const password = document.getElementById("password");
             const googlelogin = document.getElementById("googlelogin");
-            const promise = firebase.auth().signInWithEmailAndPassword(email.value, password.value);
+
+            const email = document.getElementById("email").value;;
+            const password = document.getElementById("password").value;;
+
+            const promise = firebase.auth().signInWithEmailAndPassword(email, password);
             promise.catch((e) => console.log(e.message));
             loggedInStatus.innerText = `You are logged in.`;
             logout.style.display = "inline";
@@ -91,3 +101,5 @@ import { auth, Google, signInWithPopup } from "./firebase.js";
     </>
   );
 }
+
+export default Login;

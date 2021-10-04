@@ -1,19 +1,10 @@
-const MongoClient = require('mongodb').MongoClient;
-const url         = 'mongodb://localhost:27017';
-let db            = null;
- 
-// connect to mongo
-MongoClient.connect(url, {useUnifiedTopology: true}, function(err, client) {
-    console.log("Connected successfully to db server");
+import { auth, Google, signInWithPopup, database } from "./firebase.js";
 
-    // connect to myproject database
-    db = client.db('myproject');
-});
 
 // create user account
 function create(name, email, password){
     return new Promise((resolve, reject) => {    
-        const collection = db.collection('users');
+        const collection = database.collection('BadBank Users');
         const doc = {name, email, password, balance: 0};
         collection.insertOne(doc, {w:1}, function(err, result) {
             err ? reject(err) : resolve(doc);
@@ -24,8 +15,8 @@ function create(name, email, password){
 // find user account
 function find(email){
     return new Promise((resolve, reject) => {    
-        const customers = db
-            .collection('users')
+        const customers = database
+            .collection('BadBank Users')
             .find({email: email})
             .toArray(function(err, docs) {
                 err ? reject(err) : resolve(docs);
@@ -37,7 +28,7 @@ function find(email){
 function findOne(email){
     return new Promise((resolve, reject) => {    
         const customers = db
-            .collection('users')
+            .collection('BadBank Users')
             .findOne({email: email})
             .then((doc) => resolve(doc))
             .catch((err) => reject(err));    
@@ -48,7 +39,7 @@ function findOne(email){
 function update(email, amount){
     return new Promise((resolve, reject) => {    
         const customers = db
-            .collection('users')            
+            .collection('BadBank Users')            
             .findOneAndUpdate(
                 {email: email},
                 { $inc: { balance: amount}},
@@ -66,7 +57,7 @@ function update(email, amount){
 function all(){
     return new Promise((resolve, reject) => {    
         const customers = db
-            .collection('users')
+            .collection('BadBank Users')
             .find({})
             .toArray(function(err, docs) {
                 err ? reject(err) : resolve(docs);

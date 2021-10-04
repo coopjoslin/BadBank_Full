@@ -17,12 +17,9 @@ function Withdraw(){
 function WithdrawMsg(props){
   return(<>
     <h5>Success</h5>
-    <button type="submit" 
+    <button
       className="btn" 
-      onClick={() => {
-        props.setShow(true);
-        props.setStatus('');
-      }}>
+      onClick={Withdraw}>
         Withdraw again
     </button>
     
@@ -33,7 +30,6 @@ function WithdrawMsg(props){
 function WithdrawForm(props){
   const [email, setEmail]   = React.useState('');
   const [amount, setAmount] = React.useState('');
-
   function handle(){
     fetch(`/account/update/${email}/-${amount}`)
     .then(response => response.text())
@@ -44,12 +40,11 @@ function WithdrawForm(props){
             props.setShow(false);
             console.log('JSON:', data);
         } catch(err) {
-            props.setStatus('Deposit failed')
+            props.setStatus('Withdraw failed')
             console.log('err:', text);
         }
     });
   }
-
 
   return(<>
 

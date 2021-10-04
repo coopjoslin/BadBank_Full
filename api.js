@@ -28,10 +28,4 @@ function create(){
     status.innerHTML = 'Account Created';
 };
 
-function allData(){
-    const status = document.getElementbyID('allDataStatus');
-    status.innerHTML = JSON.stringify(ctx.accounts)
-};
-
 export default create;
-export default allData;

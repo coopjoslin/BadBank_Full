@@ -1,20 +1,14 @@
+const database = firebase.database();
+
 function AllData(){
-    const [data, setData] = React.useState('');    
-
-    React.useEffect(() => {
-        
-        // fetch all accounts from API
-        fetch('/account/all')
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                setData(JSON.stringify(data));                
-            });
-
-    }, []);
+    //const [data, setData] = React.useState('');
+    console.log('alldata fired');
+    var stringData = firebase.database().toString();
 
     return (<>
         <h5>All Data in Store:</h5>
-        { data }
+        { stringData }
     </>);
 }
+
+export default AllData;

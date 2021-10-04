@@ -1,5 +1,6 @@
 import * as firebase from 'firebase';
-import { firebaseConfig } from "./config.js";
+require("firebase/database");
+require("firease/firestore");
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 const firebaseConfig = {
@@ -13,7 +14,9 @@ const firebaseConfig = {
 const auth = firebase.auth();
 const Google = firebase.GoogleAuthProvider();
 const signInWithPopup = firebase.signInWithPopup();
-
+const db = firebase.database();
+const firestore = firebase.firestore();
+const admin = require('firebase-admin');
 export default {
-  auth, Google, signInWithPopup
+  app, auth, Google, signInWithPopup, db, firestore, admin
 };
