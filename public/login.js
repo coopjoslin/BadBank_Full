@@ -1,6 +1,9 @@
 
-import firebase, { auth, Google, signInWithPopup, db, firestore } from "./firebase.js";
-  // Your web app's Firebase configuration
+import firebase, { admin, auth, Google, signInWithPopup, db, firestore } from "./firebase.js";
+require("firebase/database");
+require("firebase/auth");
+require("firease/firestore");
+
   const firebaseConfig = {
     apiKey: "AIzaSyCzLdWJEq0vOWSjfVA3C5OQxX--HO3kJmI",
     authDomain: "badbank-bb18b.firebaseapp.com",
@@ -11,6 +14,24 @@ import firebase, { auth, Google, signInWithPopup, db, firestore } from "./fireba
 };
 
 const ref = db.ref('badbank-bb18b/users/bbUsers');
+
+function createUserAccount() {
+  const auth = firebase.auth().getAuth();
+  const loggedInStatus = document.getElementById("loggedInStatus");
+  const email = document.getElementById("email");
+  const password = document.getElementById("password");
+  firebase.admin.createUser(auth, {
+    email: email.value,
+    password: password.value,
+  })
+  .then((userRecord) => {
+    // See the UserRecord reference doc for the contents of userRecord.
+    console.log('Successfully created new user:', userRecord.uid);
+  })
+  .catch((error) => {
+    console.log('Error creating new user:', error);
+  });
+};
   
 function Login(){
   console.log('login fired');
@@ -22,31 +43,7 @@ function Login(){
       <input id='password' type='password' placeholder='Password' />
       <br />
       <br />
-      <button id="createAccount" onClick={() => {
-            const loggedInStatus = document.getElementById("loggedInStatus");
-            const email = document.getElementById("email").value;
-            const password = document.getElementById("password").value;
-
-            firebase.auth().createUserWithEmailAndPassword(email, password)
-                .then(function(result) {
-                  const usersRef = ref.child('users');
-                  usersRef.child('users').push({
-                    email: email,
-                    password: password
-                  });
-                })
-                .catch(function(error) {
-                  var errorCode = error.code;
-                  var errorMessage = error.message;
-                  if (errorCode == 'auth/weak-password') {
-                    alert('The password is too weak.');
-                  } else {
-                    alert(errorMessage);
-                  }
-                  console.log(error);
-                });
-                
-                } }>Create Account</button>
+      <button id="createAccount" onClick={createUserAccount()}>Create Account</button>
       <button id='logout' style={{ display: "none" }} onClick={()=> {
             firebase.auth().signOut();
             const loggedInStatus = document.getElementById("loggedInStatus");

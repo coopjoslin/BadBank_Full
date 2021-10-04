@@ -1,3 +1,4 @@
+import { Login } from "./login.js";
 const firebaseConfig = {
     apiKey: "AIzaSyCzLdWJEq0vOWSjfVA3C5OQxX--HO3kJmI",
     authDomain: "badbank-bb18b.firebaseapp.com",

@@ -1,5 +1,3 @@
-const database = firebase.database();
-
 function AllData(){
     //const [data, setData] = React.useState('');
     console.log('alldata fired');
