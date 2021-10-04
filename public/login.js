@@ -9,6 +9,8 @@ import firebase, { auth, Google, signInWithPopup, db, firestore } from "./fireba
     messagingSenderId: "745789819925",
     appId: "1:745789819925:web:8ae5823019b3ac9692d21c",
 };
+
+const ref = db.ref('badbank-bb18b/users/bbUsers');
   
 function Login(){
   console.log('login fired');
@@ -25,9 +27,13 @@ function Login(){
             const email = document.getElementById("email").value;
             const password = document.getElementById("password").value;
 
-            firebase.auth().createUser();
             firebase.auth().createUserWithEmailAndPassword(email, password)
                 .then(function(result) {
+                  const usersRef = ref.child('users');
+                  usersRef.child('users').push({
+                    email: email,
+                    password: password
+                  });
                 })
                 .catch(function(error) {
                   var errorCode = error.code;
@@ -39,8 +45,6 @@ function Login(){
                   }
                   console.log(error);
                 });
-           
-                const url = `/account/create/${email}/${password}`;
                 
                 } }>Create Account</button>
       <button id='logout' style={{ display: "none" }} onClick={()=> {
