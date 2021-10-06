@@ -1,7 +1,10 @@
+const db = firebase.database();
+
 function Deposit(){
   const [show, setShow]     = React.useState(true);
   const [status, setStatus] = React.useState('');  
   console.log("deposit fired");
+  
   return (
     <Card
       bgcolor="warning"
@@ -14,7 +17,7 @@ function Deposit(){
   )
 }
 
-function DepositMsg(props){
+function DepositMsg(){
   console.log('depositmsg fired');
   return (<>
     <h5>Success</h5>
@@ -28,39 +31,40 @@ function DepositMsg(props){
 } 
 
 function DepositForm(props){
-  const [email, setEmail]   = React.useState('');
-  const [amount, setAmount] = React.useState('');  
+
   console.log('depositform fired');
+
   function handle(){
-    console.log('handle fired');
-    fetch(`/account/update/${email}/${amount}`)
-    .then(response => response.text())
-    .then(text => {
-        try {
-            const data = JSON.parse(text);
-            props.setStatus(JSON.stringify(data.value));
-            props.setShow(false);
-            console.log('JSON:', data);
-        } catch(err) {
-            props.setStatus('Deposit failed')
-            console.log('err:', text);
-        }
-    });
-  }
+    const userName = document.getElementById("name").value;
+    const amount = document.getElementById("amount").value;
+
+    var ref = firebase.database().ref("users/" + userName + '/balance');
+    ref.once("value")
+    .then(function(snapshot) {
+    var key = snapshot.val();
+    const currentBalance = parseInt(amount) + parseInt(key);
+    console.log(currentBalance);
+    firebase.database().ref("users/" + userName)
+    .update(
+      {balance: currentBalance},
+    );
+  });
+  };
 
   return(<>
 
-    Email<br/>
-    <input type="input" 
+    Name<br/>
+    <input type="string" 
+      id = "name"
       className="form-control" 
-      placeholder="Enter email" 
-      value={email} onChange={e=>setEmail(e.currentTarget.value)}/><br/>
+      placeholder="Enter name"/><br/>
       
     Amount<br/>
     <input type="number" 
+      id="amount"
       className="form-control" 
       placeholder="Enter amount" 
-      value={amount} onChange={e=>setAmount(e.currentTarget.value)}/><br/>
+      /><br/>
 
     <button type="submit" 
       className="btn" 

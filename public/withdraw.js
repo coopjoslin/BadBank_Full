@@ -30,37 +30,37 @@ function WithdrawMsg(props){
 function WithdrawForm(props){
   const [email, setEmail]   = React.useState('');
   const [amount, setAmount] = React.useState('');
+
   function handle(){
-    fetch(`/account/update/${email}/-${amount}`)
-    .then(response => response.text())
-    .then(text => {
-        try {
-            const data = JSON.parse(text);
-            props.setStatus(JSON.stringify(data.value));
-            props.setShow(false);
-            console.log('JSON:', data);
-        } catch(err) {
-            props.setStatus('Withdraw failed')
-            console.log('err:', text);
-        }
-    });
-  }
+    const userName = document.getElementById("name").value;
+    const amount = document.getElementById("amount").value;
+
+    var ref = firebase.database().ref("users/" + userName + '/balance');
+    ref.once("value")
+    .then(function(snapshot) {
+    var key = snapshot.val();
+    const currentBalance = parseInt(key) - parseInt(amount);
+    console.log(currentBalance);
+    firebase.database().ref("users/" + userName)
+    .update(
+      {balance: currentBalance},
+    );
+  });
+  };
 
   return(<>
 
-    Email<br/>
+    Name<br/>
     <input type="input" 
+    id="name"
       className="form-control" 
-      placeholder="Enter email" 
-      value={email} 
-      onChange={e => setEmail(e.currentTarget.value)}/><br/>
+      placeholder="Enter email"/><br/>
 
     Amount<br/>
     <input type="number" 
+    id="amount"
       className="form-control" 
-      placeholder="Enter amount" 
-      value={amount} 
-      onChange={e => setAmount(e.currentTarget.value)}/><br/>
+      placeholder="Enter amount"/><br/>
 
     <button type="submit" 
       className="btn" 
