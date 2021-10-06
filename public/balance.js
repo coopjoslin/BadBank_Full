@@ -21,8 +21,6 @@ function BalanceMsg(props){
     <button type="submit" 
       className="btn" 
       onClick={() => {
-        props.setShow(true);
-        props.setStatus('');
       }}>
         Check balance again
     </button>
@@ -34,36 +32,32 @@ function BalanceForm(props){
   const [balance, setBalance] = React.useState('');  
 
   function handle(){
-    fetch(`/account/findOne/${email}`)
-    .then(response => response.text())
-    .then(text => {
-        try {
-            const data = JSON.parse(text);
-            props.setStatus(text);
-            props.setShow(false);
-            setBalance(user.balance);
-            console.log('JSON:', data);
-        } catch(err) {
-            props.setStatus(text)
-            console.log('err:', text);
-        }
-    });
+    const userName = document.getElementById("name").value;
+    var ref = firebase.database().ref("users/" + userName + '/balance');
+    ref.once("value")
+    .then(
+    function(snapshot) {
+    const key = snapshot.val();
+    console.log(key);
+    const target = document.getElementById("target")
+    target.innerHTML= "<p>" + key + "</p>";
+  }); 
   }
 
   return (<>
 
-    Email<br/>
+    Name<br/>
     <input type="input" 
+    id = "name"
       className="form-control" 
-      placeholder="Enter email" 
-      value={email} 
-      onChange={e => setEmail(e.currentTarget.value)}/><br/>
+      placeholder="Enter email" /><br/>
 
     <button type="submit" 
       className="btn" 
       onClick={handle}>
         Check Balance
     </button>
+    <div id="target"></div>
 
   </>);
 }
